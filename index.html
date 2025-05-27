@@ -33,6 +33,17 @@
       padding: 20px;
       box-sizing: border-box;
     }
+    
+    .zoom-in {
+      opacity: 0;
+      transform: scale(0.8);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+    
+    .zoom-in.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
 
     h1 {
       color: #fff;
@@ -61,19 +72,31 @@
     button:hover {
       background-color: rgba(255, 105, 180, 0.95);
     }
+    
+    audio {
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <h1>Hi, Sayangku!</h1>
-  <p>A little note to the one I love, my dearest boyfriend.</p>
-  <button onclick="showMessages()">Click here</button>
-  <p style="margin-top: 20px;">With love, Sheila♡</p>
+  <h1 class="zoom-in">Hi, Sayangku!</h1>
+  <p class="zoom-in">A little note to the one I love, my dearest boyfriend.</p>
+  <button class="zoom-in" onclick="showMessages()">Click here</button>
+  <p class="zoom-in" style="margin-top: 20px;">With love, Sheila♡</p>
 
-  <audio autoplay loop>
-    <source src="https://files.catbox.moe/15fj8j.mp3" type="audio/mpeg">
+  <audio id="bg-music" loop>
+    <source src="https://files.catbox.moe/b9v1ux.mp3" type="audio/mpeg">
   </audio>
 
   <script>
+    // Zoom-in animation saat halaman selesai load
+    window.addEventListener('load', () => {
+      const elements = document.querySelectorAll('.zoom-in');
+      setTimeout(() => {
+        elements.forEach(el => el.classList.add('visible'));
+      }, 200); // delay halus
+    });
+    
     const messages = [
       "Hi Sayangkuuuu🥰",
       "How are you?",
@@ -86,8 +109,8 @@
       "Because I might be sooooo annoying, moody, and dramatic some time ago...",
       "But at least I'm your annoying, moody, and dramatic girlfriend🤪",
       "Please don't replace me with a plant🌱🌿🍃",
-      "Honestly, I was just missing you so much",
       "Missing you till I wanna die💔",
+      "Honestly, I was just missing you so much",
       "Hehe no no",
       "Just kidding😘",
       "And I also want to talk with you more",
@@ -121,6 +144,7 @@
       "You show me what it means to be truly cared for🤍",
       "Thank you for being the most incredible man I could ever wish for💏",
       "Thank you for being gentle to me",
+      "Thank you for making me feel so loved",
       "Sayaaang...",
       "If loving me was so hard and draining",
       "I'm truly sorry for the weight I added👉🏻👈🏻",
@@ -152,11 +176,15 @@
       "Spend our time together🥰",
       "Sooooo excited🙌🏻",
       "I love you❤️",
-      "See you my love, my world, my life",
+      "You mean so much to me sayang",
+      "See you my love, my world, my life✨",
       "👋🏻👋🏻👋🏻👋🏻👋🏻👋🏻👋🏻👋🏻👋🏻👋🏻"
     ];
 
     function showMessages() {
+      const audio = document.getElementById("bg-music");
+      audio.play().catch(e => console.log("Autoplay blocked:", e));
+      
       let i = 0;
       function nextMessage() {
         if (i < messages.length) {
