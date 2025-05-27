@@ -12,6 +12,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>From Your Cute Girlfriend</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style>
@@ -23,31 +24,33 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      backdrop-filter: brightness(0.9);
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
     h1 {
       color: #fff;
-      font-size: 40px;
+      font-size: 2.2rem;
       text-align: center;
     }
 
     p {
       color: #fff;
-      font-size: 22px;
-      margin-bottom: 30px;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
       text-align: center;
     }
 
     button {
       padding: 12px 30px;
-      font-size: 18px;
-      background-color: rgba(255, 182, 193, 0.8);
+      font-size: 1rem;
+      background-color: rgba(255, 182, 193, 0.85);
       color: #333;
       border: none;
       border-radius: 15px;
@@ -56,7 +59,7 @@
     }
 
     button:hover {
-      background-color: rgba(255, 105, 180, 0.9);
+      background-color: rgba(255, 105, 180, 0.95);
     }
   </style>
 </head>
@@ -64,9 +67,8 @@
   <h1>Hi, Sayangku!</h1>
   <p>A little note to the one I love, my dearest boyfriend.</p>
   <button onclick="showMessages()">Click here</button>
-  <p>With love, Sheila♡</p>
-  
-  <!-- Lagu autoplay -->
+  <p style="margin-top: 20px;">With love, Sheila♡</p>
+
   <audio autoplay loop>
     <source src="https://files.catbox.moe/15fj8j.mp3" type="audio/mpeg">
   </audio>
